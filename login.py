@@ -37,7 +37,7 @@ class Ui_Window1(object):
         self.password_text = QtWidgets.QLineEdit(self.centralwidget)
         self.password_text.setGeometry(QtCore.QRect(290, 280, 271, 31))
         self.password_text.setObjectName("password_text")
-        #self.password_text setEchoMode()
+        self.password_text.setEchoMode(QtWidgets.QLineEdit.Password)
         
         
         self.username = QtWidgets.QLabel(self.centralwidget)
