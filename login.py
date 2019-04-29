@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from code import Ui_Window2
 import sqlite3
 class Ui_Window1(object):
     def logincheck(self):
@@ -16,6 +17,11 @@ class Ui_Window1(object):
         result = connection.execute("SELECT * FROM USERS1 WHERE USERNAME = ? AND PASSWORD = ?",(username,password))
         if (len(result.fetchall()))>0:  #Means result is found here
             print("user Found")
+            self.welcomeWindow = QtWidgets.QMainWindow()
+            #self.ui=Ui_MainWindow()
+            self.ui=Ui_Window2()
+            self.ui.setupUi(self.welcomeWindow)
+            self.welcomeWindow.show()
         else:
             print("NOT FOUND")
     def setupUi(self, Window1):
@@ -31,6 +37,8 @@ class Ui_Window1(object):
         self.password_text = QtWidgets.QLineEdit(self.centralwidget)
         self.password_text.setGeometry(QtCore.QRect(290, 280, 271, 31))
         self.password_text.setObjectName("password_text")
+        #self.password_text setEchoMode()
+        
         
         self.username = QtWidgets.QLabel(self.centralwidget)
         self.username.setGeometry(QtCore.QRect(210, 240, 60, 16))
