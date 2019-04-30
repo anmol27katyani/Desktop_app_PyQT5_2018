@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import requests
+
 class Ui_Window2(object):
     def logincheck(self):
         user="sd"
@@ -53,17 +53,7 @@ class Ui_Window2(object):
     def retranslateUi(self, Window2):
         _translate = QtCore.QCoreApplication.translate
         Window2.setWindowTitle(_translate("Window2", "MainWindow"))
-        URL="http://127.0.0.1:8000/quiz/"
-        PARAMS={}
-        r=requests.get(url=URL)
-        #print(r.text)
-        q=r.text
-        q=q[10:]
-        q=q[:-3]
-        #print(q)
-
-        self.Question.setText(_translate("Window2", q))
-       # self.Question.setText(_translate("Window2", "Question: Given an array of integers, and a number ‘sum’, find the number of pairs of integers in the array whose sum is equal to ‘sum’?"))
+        self.Question.setText(_translate("Window2", "Question: Given an array of integers, and a number ‘sum’, find the number of pairs of integers in the array whose sum is equal to ‘sum’?"))
         self.submitbutton.setText(_translate("Window2", "Submit"))
         self.actionRun.setText(_translate("Window2", "Run"))
         self.actionExit.setText(_translate("Window2", "Exit"))
