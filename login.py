@@ -9,13 +9,20 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from code import Ui_Window2
 import sqlite3
+import requests
 class Ui_Window1(object):
     def logincheck(self):
         username=self.uname_text.text()
         password=self.password_text.text()
-        connection=sqlite3.connect("login1.db")
-        result = connection.execute("SELECT * FROM USERS1 WHERE USERNAME = ? AND PASSWORD = ?",(username,password))
-        if (len(result.fetchall()))>0:  #Means result is found here
+        URL="http://127.0.0.1:8000/auth/"
+        PARAMS={'userid':username,'password':password}
+        r=requests.post(url=URL,data=PARAMS)
+        print(r.text)
+        if(r.text=="1"):
+            print("golddigger")
+        #connection=sqlite3.connect("login1.db")
+        #result = connection.execute("SELECT * FROM USERS1 WHERE USERNAME = ? AND PASSWORD = ?",(username,password))
+        #if (len(result.fetchall()))>0:  #Means result is found here
             print("user Found")
             self.welcomeWindow = QtWidgets.QMainWindow()
             #self.ui=Ui_MainWindow()
